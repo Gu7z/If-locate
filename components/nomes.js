@@ -88,14 +88,6 @@ class Nomes extends Component {
               {text: 'Ok'}
             ]
           )
-      }else{
-        Alert.alert(
-          '',
-          'Esta sala não tem aula no momento',
-          [
-            {text: 'Ok'}
-          ]
-        )
       }
     })
   }
