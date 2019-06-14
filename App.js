@@ -15,10 +15,10 @@ import {
 import Permissions from 'react-native-permissions'
 import AndroidOpenSettings from 'react-native-android-open-settings'
 
-import Ble from './ble';
-import Clock from './clock';
-import Nomes from './nomes';
-import Inf from './Inf';
+import Ble from './components/ble';
+import Clock from './components/clock';
+import Nomes from './components/nomes';
+import Inf from './components/Inf';
 
 export default class App extends Component {
 

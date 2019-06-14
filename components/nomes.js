@@ -75,28 +75,29 @@ class Nomes extends Component {
   // }
 
   alerta(data){
-    console.log(this.state.final)
-    id = data.index
-    if(this.state.final[id] && this.state.final.length > 0){
-      Alert.alert(
-        this.state.final[id].sala,
-        'Turma: ' + this.state.final[id].turma + '\n\n'  +
-        'Matéria: ' + this.state.final[id].materia + '\n\n'  +
-        'Professor(a): ' + this.state.final[id].prof + '\n\n'+
-        'Inicia as: ' + this.state.final[id].inicio + '\n\n'+
-        'Termina as: ' + this.state.final[id].fim,
-        [
-          {text: 'Ok'}
-        ]
-      )
-    }else{
-      Alert.alert(
-        '','Não está tendo aula nesta sala no momento',
-        [
-          {text: 'ok'}
-        ]
-      )
-    }
+    this.state.final.map(aula => {
+      if(aula.sala == data.item && this.state.final.length > 0){
+          Alert.alert(
+            aula.sala,
+            'Turma: ' + aula.turma + '\n\n'  +
+            'Matéria: ' + aula.materia + '\n\n'  +
+            'Professor(a): ' + aula.prof + '\n\n'+
+            'Inicia as: ' + aula.inicio + '\n\n'+
+            'Termina as: ' + aula.fim,
+            [
+              {text: 'Ok'}
+            ]
+          )
+      }else{
+        Alert.alert(
+          '',
+          'Esta sala não tem aula no momento',
+          [
+            {text: 'Ok'}
+          ]
+        )
+      }
+    })
   }
 
   render(){
@@ -114,7 +115,7 @@ class Nomes extends Component {
               extraData={this.state}
               renderItem={({item, index}) =>
                 <View>
-                  <Text onPress={()=> this.alerta({index})} style={{
+                  <Text onPress={()=> this.alerta({item})} style={{
                       alignSelf:'center',
                       paddingTop:'5%',
                       marginBottom: '5%'

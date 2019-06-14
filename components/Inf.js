@@ -57,6 +57,7 @@ export default class Inf extends Component {
 
   procurasala = (res, sala) => {
     resultadoProcurasala = []
+    ultimo=[]
     for(i=0; i<=sala.length-1; i++){
       for(j=0; j<=resultado.length-1; j++){
         if(sala[i] == resultado[j].sala){
@@ -64,6 +65,15 @@ export default class Inf extends Component {
         }
       }
     }
+
+    for(i=resultadoProcurasala.length-1; i>0; i--){
+      if(resultadoProcurasala[i].materia == resultadoProcurasala[i-1].materia){
+        resultadoProcurasala.splice(i-1, 1)
+      }
+    }
+
+    console.log(resultadoProcurasala)
+
     return resultadoProcurasala
   }
 
